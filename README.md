@@ -40,7 +40,7 @@ A full-stack web application to manage and serve all data and services related t
 
 ```bash
 # Clone the repository
-git clone https://github.com/SAKETHVUNKA/CITY_METRO_SYSTEM.git
+git clone https://github.com/SAKETHVUNKA/metro-user-portal.git
 cd CITY_METRO_SYSTEM
 
 # Create and activate virtual environment
@@ -66,10 +66,6 @@ python manage.py runserver
 - Visit http://127.0.0.1:8000/
 - Register/login as a user
 - Explore schedules, purchase tickets, scan QR codes, and more
-
-## 📄 Entity-Relationship Diagram
-
-(Attach or link your ER diagram here)
 
 ## ⚖️ License
 
