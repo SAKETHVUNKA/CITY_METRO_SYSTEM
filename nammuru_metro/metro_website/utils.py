@@ -9,12 +9,18 @@ import random
 import string
 from twilio.rest import Client
 
+#MySQL DB details
+host_name = "127.0.0.1 "
+user_name = "root "
+user_password = "pass "
+database_name = "metro1 "
+
 def getLineInfo(line_colour):
     conn = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     # Create a cursor
@@ -33,10 +39,10 @@ def getLineInfo(line_colour):
     conn.close()
 
     conn = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
     cursor = conn.cursor()
     cursor.callproc('GetStationsByLineColor', (line_colour,))
@@ -59,10 +65,10 @@ def getLineInfo(line_colour):
     
 def getStationInfo(station_name):
     conn = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     # Create a cursor
@@ -94,10 +100,10 @@ def insert_user_and_rider_card(user_id, user_password, mobile_number, parking_id
     try:
         # Create a MySQL connection
         db_config = {
-            "host": "127.0.0.1",
-            "user": "root",
-            "password": "pass",
-            "database": "metro1"
+            "host": host_name,
+            "user": user_name,
+            "password": user_password,
+            "database": database_name
         }
 
         connection = mysql.connector.connect(**db_config)
@@ -136,10 +142,10 @@ def insert_user_and_rider_card(user_id, user_password, mobile_number, parking_id
 def find_routes(start_station, end_station):
     # Connect to the MySQL database
     db = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     cursor = db.cursor()
@@ -193,10 +199,10 @@ def fetch_card_details_by_user_id(user_id):
     try:
         # Establish a connection to the local MySQL server
         connection = mysql.connector.connect(
-            host="127.0.0.1",
-            user="root",
-            password="pass",
-            database="metro1"
+            host=host_name,
+            user=user_name,
+            password=user_password,
+            database=database_name
         )
 
         cursor = connection.cursor()
@@ -226,10 +232,10 @@ def increment_card_balance(card_id, amount_to_add):
     try:
         # Establish a MySQL database connection
         conn = mysql.connector.connect(
-            host="127.0.0.1",
-            user="root",
-            password="pass",
-            database="metro1"
+            host=host_name,
+            user=user_name,
+            password=user_password,
+            database=database_name
         )
 
         # Create a cursor
@@ -251,10 +257,10 @@ def increment_card_balance(card_id, amount_to_add):
 def check_balance(p_Ticket_Price, p_card_id):
     # Establish a MySQL database connection
     conn = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     # Create a cursor
@@ -294,10 +300,10 @@ def insert_ticket(p_Ticket_Price, p_Start_Station, p_End_Station, p_Mode_of_Purc
 
     # Establish a MySQL database connection
     conn = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     # Create a cursor
@@ -335,14 +341,16 @@ def insert_ticket(p_Ticket_Price, p_Start_Station, p_End_Station, p_Mode_of_Purc
         cursor.close()
         conn.close()
         
+
+
 def get_most_recent_ticket(user_id):
     try:
         # Establish a connection to the MySQL server on localhost
         connection = mysql.connector.connect(
-            host="127.0.0.1",
-            user="root",
-            password="pass",
-            database="metro1"
+            host=host_name,
+            user=user_name,
+            password=user_password,
+            database=database_name
         )
 
         if connection.is_connected():
@@ -391,10 +399,10 @@ def generate_unique_parking_id():
 def insert_parking(station_id, user_id, vehicle_number, fee):
     # Connect to the MySQL database
     db = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     cursor = db.cursor()
@@ -428,10 +436,10 @@ def fetch_parking_details(user_id):
     try:
         # Establish a connection to the local MySQL server
         connection = mysql.connector.connect(
-            host="127.0.0.1",
-            user="root",
-            password="pass",
-            database="metro1"
+            host=host_name,
+            user=user_name,
+            password=user_password,
+            database=database_name
         )
 
         cursor = connection.cursor()
@@ -458,13 +466,15 @@ def fetch_parking_details(user_id):
         cursor.close()
         connection.close()
 
+
+
 def check_train_line(start_station, end_station):
     # Connect to the MySQL database
     connection = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     cursor = connection.cursor()
@@ -510,13 +520,15 @@ def check_train_line(start_station, end_station):
         cursor.close()
         connection.close()
 
+
+
 def find_nearest_station(start_station, start_line):
     # Connect to the MySQL database
     connection = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     cursor = connection.cursor()
@@ -565,13 +577,15 @@ def find_nearest_station(start_station, start_line):
         cursor.close()
         connection.close()
 
+
+
 def display_updated_durations(schedule_updates, min_time):
     # Connect to the MySQL database
     connection = mysql.connector.connect(
-        host="127.0.1.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     try:
@@ -612,6 +626,8 @@ def display_updated_durations(schedule_updates, min_time):
     finally:
         connection.close()
 
+
+
 def main_function(start_station, end_station, min_time):
     # Step 1: Check the train line
     start_station, start_line, end_station = check_train_line(start_station, end_station)
@@ -625,14 +641,16 @@ def main_function(start_station, end_station, min_time):
     # return start_station, start_line, end_station, updated_durations
     return updated_durations
 
+
+
 def login_procedure(user_id, user_password):
     try:
         # Establish a connection to the local MySQL server
         connection = mysql.connector.connect(
-            host="127.0.0.1",
-            user="root",
-            password="pass",
-            database="metro1"
+            host=host_name,
+            user=user_name,
+            password=user_password,
+            database=database_name
         )
 
         cursor = connection.cursor(buffered=True)
@@ -651,11 +669,6 @@ def login_procedure(user_id, user_password):
                     phone_number = row[1]
                     is_user = row[2]
                     phone_number = '+91' + str(phone_number)
-                    # Generate an OTP
-                    # otp = generate_otp()
-
-                    # Send OTP via Gmail
-                    # send_otp_via_sms(phone_number,otp)
                     
                     return user_id, is_user
                 else:
@@ -670,10 +683,10 @@ def login_procedure(user_id, user_password):
 def update_exit_time(ticket_id):
     # Establish a MySQL database connection
     conn = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     # Create a cursor
@@ -706,10 +719,10 @@ def update_entry_time(ticket_id):
 
     # Establish a MySQL database connection
     conn = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     # Create a cursor
@@ -730,10 +743,10 @@ def update_entry_time(ticket_id):
 def update_parking_status(parking_id):
     # Connect to the MySQL database
     db = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     cursor = db.cursor()
@@ -753,41 +766,15 @@ def update_parking_status(parking_id):
     finally:
         cursor.close()
         db.close()
-
-
-
-
-
-
-
-
-
-
-
-
-        
-# def generate_otp():
-#     digits = string.digits
-#     otp = ''.join(random.choice(digits) for _ in range(6))
-#     return otp
-
-# def send_otp_via_sms(phone_number, otp):
-#     account_sid = 'AC53cbce7e65f2914a4e0c9682269d66c5'
-#     auth_token = 'fea8f9651055e72642cd6a12d777d5fb'
-#     client = Client(account_sid, auth_token)
-
-#     message = client.messages.create(
-#         to=phone_number,
-#         from_='+12512570659',
-#         body=f'Your OTP is: {otp}'
-#     )
     
+
+
 def retrieve_ticket_details(start_time, end_time, input_date):
     connection = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="pass",
-        database="metro1"
+        host=host_name,
+        user=user_name,
+        password=user_password,
+        database=database_name
     )
 
     cursor = connection.cursor()

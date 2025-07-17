@@ -40,26 +40,38 @@ A full-stack web application to manage and serve all data and services related t
 
 ```bash
 # Clone the repository
+# Clone the repository
 git clone https://github.com/SAKETHVUNKA/metro-user-portal.git
-cd CITY_METRO_SYSTEM
+cd metro-user-portal
 
-# Create and activate virtual environment
+# Create and activate a virtual environment
 python -m venv venv
 venv\Scripts\activate  # On Windows
 # or
 source venv/bin/activate  # On macOS/Linux
 
-# Install dependencies
+# Install project dependencies
 pip install -r requirements.txt
 
-# Configure your MySQL database in settings.py
+# Initialize MySQL database
+# 1. Create a new MySQL database (e.g., metro_db)
+# 2. Import the provided dump.sql file to populate it:
+mysql -u your_mysql_user -p metro_db < dump.sql
 
-# Apply migrations
+# 3. Open the project's utils.py file and update the MySQL connection details:
+#    host, user, password, and database name as per your local setup
+
+# Apply Django migrations
 python manage.py migrate
 
-# Run the server
+# Run the development server
 python manage.py runserver
 ```
+
+## 👥 Authors
+
+ - [Naga Saketh V](https://github.com/SAKETHVUNKA)
+ - [Adnan Zaki](https://github.com/zaki-1337)
 
 ## 💡 Usage
 
